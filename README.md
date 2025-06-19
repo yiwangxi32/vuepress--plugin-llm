@@ -51,3 +51,22 @@ module.exports = {
 | enabled | Boolean | true | 是否启用插件 |
 | apiEndpoint | String | '' | LLM API端点地址 |
 | typingSpeed | Number | 30 | 打字机效果速度(ms) |
+
+## Deployment
+
+VuePress generates static HTML, CSS, and JavaScript files that can be easily deployed to various hosting providers.
+
+Popular static hosting providers include:
+- GitHub Pages
+- Netlify
+- Vercel
+
+Generic deployment steps:
+
+1.  **Install VuePress**: Ensure VuePress is installed in your project.
+2.  **Configure the plugin**: Add and configure `vuepress-plugin-llm` in your `.vuepress/config.js` file.
+3.  **Set API Key**: Make sure to set your API key in the plugin options for the LLM service to work.
+4.  **Build your site**: Run the VuePress build command (e.g., `vuepress build docs` or `npm run docs:build`). This will typically generate a `dist` directory (or similar, depending on your VuePress configuration) containing the static files.
+5.  **Deploy**: Deploy the contents of the generated `dist` directory to your chosen hosting provider.
+
+For ease of use and built-in CI/CD (Continuous Integration/Continuous Deployment) capabilities, **Netlify** and **Vercel** are highly recommended. They often provide seamless integration with Git repositories, automatically building and deploying your site when you push changes.

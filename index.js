@@ -32,7 +32,7 @@ module.exports = (options, ctx) => {
     async ready() {
       // 初始化LLM插件
       if (process.client) {
-        const { default: llmApi } = await import('./llmApi')
+        const { default: llmApi } = await import('./services/llmApi')
         llmApi.init(this.$LLM_CONFIG)
       }
     },
@@ -40,7 +40,7 @@ module.exports = (options, ctx) => {
     // 自动摘要方法
     async generateSummary(content) {
       if (process.client) {
-        const { default: llmApi } = await import('./llmApi')
+        const { default: llmApi } = await import('./services/llmApi')
         return await llmApi.summarize(content)
       }
     },
@@ -48,15 +48,15 @@ module.exports = (options, ctx) => {
     // 智能问答方法
     async answerQuestion(question) {
       if (process.client) {
-        const { default: llmApi } = await import('./llmApi')
+        const { default: llmApi } = await import('./services/llmApi')
         return await llmApi.ask(question)
       }
     },
     enhanceAppFiles: [
       {
         name: 'llm-api-setup',
-        content: `import llmApi from './llmApi'
-import LLMPlugin from './LLMPlugin.vue'
+        content: `import llmApi from './services/llmApi'
+import LLMPlugin from './components/LLMPlugin.vue'
 
 export default ({ Vue }) => {
   Vue.prototype.$llmApi = llmApi
